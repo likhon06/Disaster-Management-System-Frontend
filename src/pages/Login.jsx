@@ -28,6 +28,7 @@ const Login = () => {
   return (
     <div className='flex justify-center items-center mt-20 mb-20 flex-col-reverse lg:flex-row'>
       <Card title="Login" className="w-96">
+      <p>Admin_ username: <span className='text-red-400 font-bold'>Raiden</span>, password: <span className='text-red-400 font-bold'>admin123</span> </p>
         <Form
           name="login"
           onFinish={onFinish}
