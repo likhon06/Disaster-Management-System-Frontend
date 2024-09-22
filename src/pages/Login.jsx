@@ -13,8 +13,11 @@ const Login = () => {
   const dispatch = useDispatch();
   const [postLogin, { isLoading: loginLoading }] = usePostLoginMutation(undefined);
   if (loginLoading) return <Spin />;
+
+
   const onFinish = async (values) => {
     console.log('Received values of form: ', values);
+    console.log(values);
     const res = await postLogin(values);
     const real_data = await jwtDecode(res.data.token);
     toast.success(`${real_data.username} logged in successfully`);

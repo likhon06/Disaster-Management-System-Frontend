@@ -49,9 +49,6 @@ export const baseApi = createApi({
                 url: `/api/auth/login`,
                 method: 'POST',
                 body: payload,
-                headers: {
-                    'Content-Type': 'application/json',
-                },
             })
         }),
         getSingleCrisis: builder.query({
