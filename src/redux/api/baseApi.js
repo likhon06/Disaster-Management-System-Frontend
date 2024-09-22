@@ -39,17 +39,16 @@ export const baseApi = createApi({
                 url: `/api/auth/register`,
                 method: 'POST',
                 body: payload,
-                headers: {
-                    'Content-Type': 'application/json',
-                },
             }),
+            invalidatesTags: ['Volunteer']
         }),
         postLogin: builder.mutation({
             query: (payload) => ({
                 url: `/api/auth/login`,
                 method: 'POST',
                 body: payload,
-            })
+            }),
+            invalidatesTags: ['Volunteer']
         }),
         getSingleCrisis: builder.query({
             query: (id) => `/api/crisis/${id}`,
