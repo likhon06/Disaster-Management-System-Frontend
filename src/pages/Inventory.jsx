@@ -53,8 +53,8 @@ const Inventory = () => {
     },
     {
       title: 'Type',
-      dataIndex: 'releif_type',
-      key: 'releif_type',
+      dataIndex: 'relief_type',
+      key: 'relief_type',
       render: type => (
         <Tag color={type === 'Relief' ? 'green' : 'blue'}>
           {type}
