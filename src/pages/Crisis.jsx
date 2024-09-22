@@ -175,7 +175,7 @@ const Crisis = () => {
   return (
     <div className='mt-12 mb-12'>
       <Card title="Active Crises" className=''>
-        <Table columns={columns} dataSource={crisisData} />
+        <Table  scroll={{ x: "max-content" }} columns={columns} dataSource={crisisData} />
       </Card>
       <Modal loading={loading} width={1400} title="Crisis Details" key={singleCrisisData && singleCrisisData[0]?.id} open={isModalOpen} footer={false} onCancel={handleCancel}>
         <Carousel className='w-full' autoplay>

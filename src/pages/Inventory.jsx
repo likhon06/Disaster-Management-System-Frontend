@@ -186,7 +186,7 @@ const Inventory = () => {
             )
           }
           <Card>
-            <Table columns={columns} dataSource={getInventory} />
+            <Table  scroll={{ x: "max-content" }} columns={columns} dataSource={getInventory} />
           </Card>
           <div className='mt-12'></div>
           {
@@ -203,7 +203,7 @@ const Inventory = () => {
             </>)
           }
           <Card>
-            <Table columns={colums_donors} dataSource={getDonationsList} />
+            <Table  scroll={{ x: "max-content" }} columns={colums_donors} dataSource={getDonationsList} />
           </Card>
           <Modal
             title={<p>Delete Inventory Item</p>}

@@ -108,7 +108,7 @@ const Volunteer = () => {
           <h1 className='mt-2'>Assign Location</h1>
           <Input onChange={(e) => setTaskLocation(e.target.value)} placeholder="Basic usage" />
         </Modal>
-        <Table columns={columns} dataSource={getVolunteer} />
+        <Table  scroll={{ x: "max-content" }} columns={columns} dataSource={getVolunteer} />
       </Card>
     </div>
   );
