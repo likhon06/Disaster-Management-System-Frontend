@@ -29,7 +29,6 @@ const Home = () => {
   const { data: getCrises, isLoading: getCrisesLoading } = useGetCrisisQuery(undefined);
   const { data: donationandExpensesDatas, isLoading: isLoadingDonationandExpenses } = useGetDonationandExpensesQuery(undefined);
   const { data: getVolunteer, isLoading: getVolunteerLoading } = useGetVolunteerQuery(undefined);
-  if (donationDatasLoading || getCrisesLoading || getVolunteerLoading || isLoadingDonationandExpenses) return <Spin />;
   console.log(donationandExpensesDatas[0])
   return (
     <div className="flex flex-col">
