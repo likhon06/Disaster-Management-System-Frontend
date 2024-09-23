@@ -28,11 +28,6 @@ const Inventory = () => {
   const [updateSingleInventory, { isLoading: updateSingleInventoryLoading }] = useUpdateSingleInventoryMutation();
   const { data: getSingleInventory, isLoading: singleInventoryLoading } = useGetSingleInventoryQuery(editId);
 
-  if (postInventoryLoading || getInventoryLoading || deleteInventoryLoading || singleInventoryLoading
-    || updateSingleInventoryLoading || getDonationsLoading || getDonationsListLoading || getDonationsReportLoading) {
-    return <Spin />;
-  }
-
 
 
   const colums_donors = [
