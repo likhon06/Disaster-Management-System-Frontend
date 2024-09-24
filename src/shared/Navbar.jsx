@@ -19,11 +19,7 @@ const { Header } = Layout;
 
 export default function Navbar() {
     const [visible, setVisible] = useState(false);
-<<<<<<< HEAD
     const user = useSelector((state) => state.user);
-=======
-    const user = useSelector((state) => state.user.user);
->>>>>>> 6b390e8fcf79f52507ce2e5071d55686a44a5de2
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
@@ -57,12 +53,6 @@ export default function Navbar() {
             selectedKeys={[location.pathname]}
             style={{ border: 'none' }}
         >
-<<<<<<< HEAD
-=======
-             <Menu.Item onClick={onClose}>
-                    <Link to='/'>Disaster Management</Link>
-                </Menu.Item>
->>>>>>> 6b390e8fcf79f52507ce2e5071d55686a44a5de2
             {menuItems.map((item) => (
                 <Menu.Item key={item.key} icon={item.icon} onClick={onClose}>
                     <Link to={item.key}>{item.label}</Link>
@@ -94,11 +84,7 @@ export default function Navbar() {
                 </Menu>
                 {
                     user?.user ? <>
-<<<<<<< HEAD
                         <Button icon={user?.user?.role === 'Admin' ? <GrUserAdmin className='text-red-500' size={20} /> : <UserOutlined />}>
-=======
-                        <Button icon={user.user.role === 'Admin' ? <GrUserAdmin className='text-red-500' size={20} /> : <UserOutlined />}>
->>>>>>> 6b390e8fcf79f52507ce2e5071d55686a44a5de2
                             {user.user.username}</Button>
                         <Button type="primary" onClick={handleLogout} className='ms-4'>Logout</Button>
                     </>
@@ -112,12 +98,8 @@ export default function Navbar() {
                 <Header style={{ background: '#fff', padding: 0 }}>
                     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 15px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-<<<<<<< HEAD
                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                 <h1 style={{ margin: 0, marginRight: '20px' }}>Disaster Management</h1>
-=======
-                            <div style={{ display: 'flex', alignItems: 'center' }}>   
->>>>>>> 6b390e8fcf79f52507ce2e5071d55686a44a5de2
                                 <div className="desktop-menu" style={{ display: 'none', '@media (min-width: 768px)': { display: 'block' } }}>
                                     <MenuComponent />
                                 </div>
@@ -157,8 +139,4 @@ export default function Navbar() {
 
         </div>
     );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 6b390e8fcf79f52507ce2e5071d55686a44a5de2
