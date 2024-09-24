@@ -162,10 +162,10 @@ const Inventory = () => {
     }
   };
   const handleDownload = () => {
-    window.open('https://dmm-backend.vercel.app/api/csv-donation', '_blank');
+    window.open('https://dmm-backend-ahxp.onrender.com/api/csv-donation', '_blank');
   };
   const handleDownloadInvenotoryReport = () => {
-    window.open('https://dmm-backend.vercel.app/api/csv-inventory', '_blank');
+    window.open('https://dmm-backend-ahxp.onrender.com/api/csv-inventory', '_blank');
   }
   return (
     <div>
