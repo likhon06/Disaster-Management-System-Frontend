@@ -53,6 +53,7 @@ export default function Navbar() {
             selectedKeys={[location.pathname]}
             style={{ border: 'none' }}
         >
+            <h1 style={{ margin: 0, marginRight: '20px' }}>Disaster Management</h1>
             {menuItems.map((item) => (
                 <Menu.Item key={item.key} icon={item.icon} onClick={onClose}>
                     <Link to={item.key}>{item.label}</Link>
@@ -98,8 +99,7 @@ export default function Navbar() {
                 <Header style={{ background: '#fff', padding: 0 }}>
                     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 15px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <h1 style={{ margin: 0, marginRight: '20px' }}>Disaster Management</h1>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>   
                                 <div className="desktop-menu" style={{ display: 'none', '@media (min-width: 768px)': { display: 'block' } }}>
                                     <MenuComponent />
                                 </div>
