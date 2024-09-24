@@ -26,7 +26,7 @@ export default function Navbar() {
 
     const handleLogout = () => {
         dispatch(setUser(null));
-        toast.success(`${user.username} has been logged out`);
+        toast.success(`${user?.user?.username} has been logged out`);
         navigate('/login');
     };
 
