@@ -28,10 +28,17 @@ const Inventory = () => {
   const [postInventory, { isLoading: postInventoryLoading }] = usePostInventoryMutation();
   const [deleteInventory, { isLoading: deleteInventoryLoading }] = useDeleteInventoryMutation();
   const [updateSingleInventory, { isLoading: updateSingleInventoryLoading }] = useUpdateSingleInventoryMutation();
+<<<<<<< HEAD
  
   // Loader
  if (postInventoryLoading || getInventoryLoading || deleteInventoryLoading || singleInventoryLoading
     || updateSingleInventoryLoading || getDonationsListLoading) {
+=======
+  const { data: getSingleInventory, isLoading: singleInventoryLoading } = useGetSingleInventoryQuery(editId);
+
+ if (postInventoryLoading || getInventoryLoading || deleteInventoryLoading || singleInventoryLoading
+    || updateSingleInventoryLoading || getDonationsLoading || getDonationsListLoading || getDonationsReportLoading) {
+>>>>>>> 6b390e8fcf79f52507ce2e5071d55686a44a5de2
     return <Spin />;
   }
 
