@@ -53,7 +53,9 @@ export default function Navbar() {
             selectedKeys={[location.pathname]}
             style={{ border: 'none' }}
         >
-            <h1 style={{ margin: 0, marginRight: '20px' }}>Disaster Management</h1>
+             <Menu.Item onClick={onClose}>
+                    <Link to='/'>Disaster Management</Link>
+                </Menu.Item>
             {menuItems.map((item) => (
                 <Menu.Item key={item.key} icon={item.icon} onClick={onClose}>
                     <Link to={item.key}>{item.label}</Link>
