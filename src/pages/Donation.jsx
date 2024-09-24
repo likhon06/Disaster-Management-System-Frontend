@@ -8,7 +8,7 @@ import { useGetDonationandExpensesQuery, useGetDonationQuery, usePostDonationMut
 const Donation = () => {
   const { data: donationDatas, isLoading } = useGetDonationQuery(undefined);
   const { data: donationandExpensesDatas, isLoading: isLoadingDonationandExpenses } = useGetDonationandExpensesQuery(undefined);
-  const [postDonation, { isLoading: isPosting }] = usePostDonationMutation(undefined);
+  const [postDonation, { isLoading: isPostingLoading  }] = usePostDonationMutation(undefined);
 
 
   if(isLoading || isLoadingDonationandExpenses || isPostingLoading) return <Spin/>
