@@ -172,7 +172,7 @@ const Inventory = () => {
       <Tabs defaultActiveKey="1">
         <TabPane tab="Inventory List" key="1">
           {
-            user?.user?.role === 'Admin' && (
+            (user?.user?.role === 'Admin' || user?.user?.role === 'Volunteer') && (
               <>
                 <Button
                   style={{ backgroundColor: 'blue', color: '' }}
