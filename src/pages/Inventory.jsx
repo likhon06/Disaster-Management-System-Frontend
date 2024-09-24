@@ -242,7 +242,7 @@ const Inventory = () => {
 
         </TabPane>
         {
-          user?.role === 'Admin' || 'Volunteer' && (
+          ['Admin', 'Volunteer'].includes(user?.user?.role) && (
             <TabPane tab="Add Item" key="2">
               <Card>
                 <Form
