@@ -80,7 +80,6 @@ const Crisis = () => {
     }
   }, [singleCrisisId, singleCrisisLoading, singleCrisisData]);
 
-  if (postCrisisLoading || isLoading || crisisLoading || (singleCrisisLoading && singleCrisisId) || statusUpdateLoading || deleteSingleCrisisLoading) return <Spin />;
 
   const handleViewSingleCrisis = (id) => {
     setSingleCrisisId(id);

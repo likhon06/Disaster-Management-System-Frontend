@@ -2,38 +2,38 @@ import React, { useEffect, useState } from 'react';
 import { Table, Tag, Space, Card, Tabs, Form, Input, Button, Select, Spin, Modal } from 'antd';
 import { DownloadOutlined, PlusOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
-import { useDeleteInventoryMutation, useGetDonationQuery, useGetDonationsListQuery, useGetDonationsReportQuery, useGetInventoryQuery, useGetSingleInventoryQuery, usePostInventoryMutation, useUpdateSingleInventoryMutation } from '../redux/api/baseApi';
+import { useDeleteInventoryMutation, useGetDonationsListQuery, useGetInventoryQuery, useGetSingleInventoryQuery, usePostInventoryMutation, useUpdateSingleInventoryMutation } from '../redux/api/baseApi';
 
 const { TabPane } = Tabs;
 
 
 const Inventory = () => {
   const user = useSelector((state) => state.user);
+  // States
   const [editId, setEditId] = useState(undefined);
   const [deleteId, setDeleteId] = useState(null);
   const [open, setOpen] = useState(false);
   const [openTwo, setOpenTwo] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [types, setTypes] = useState('Expense');
   const [updatedPrice, setUpdatedPrice] = useState('');
-  const { data: getDonationsList, isLoading: getDonationsListLoading } = useGetDonationsListQuery(undefined);
   const [updatedName, setUpdatedName] = useState('');
-  const { data: getDonationsReport, isLoading: getDonationsReportLoading } = useGetDonationsReportQuery(undefined);
-  const { data: getDonations, isLoading: getDonationsLoading } = useGetDonationQuery(undefined);
   const [updatedQuantity, setUpdatedQuantity] = useState('');
-  const [updatedType, setUpdatedType] = useState('');
-  const [postInventory, { isLoading: postInventoryLoading }] = usePostInventoryMutation();
+  
+  // Querys
+  const { data: getDonationsList, isLoading: getDonationsListLoading } = useGetDonationsListQuery(undefined);
+  const { data: getSingleInventory, isLoading: singleInventoryLoading } = useGetSingleInventoryQuery(editId);
   const { data: getInventory, isLoading: getInventoryLoading } = useGetInventoryQuery();
+  
+  // Mutations
+  const [postInventory, { isLoading: postInventoryLoading }] = usePostInventoryMutation();
   const [deleteInventory, { isLoading: deleteInventoryLoading }] = useDeleteInventoryMutation();
   const [updateSingleInventory, { isLoading: updateSingleInventoryLoading }] = useUpdateSingleInventoryMutation();
-  const { data: getSingleInventory, isLoading: singleInventoryLoading } = useGetSingleInventoryQuery(editId);
-
-  if (postInventoryLoading || getInventoryLoading || deleteInventoryLoading || singleInventoryLoading
-    || updateSingleInventoryLoading || getDonationsLoading || getDonationsListLoading || getDonationsReportLoading) {
+ 
+  // Loader
+ if (postInventoryLoading || getInventoryLoading || deleteInventoryLoading || singleInventoryLoading
+    || updateSingleInventoryLoading || getDonationsListLoading) {
     return <Spin />;
   }
-
-
 
   const colums_donors = [
     {
@@ -242,7 +242,7 @@ const Inventory = () => {
 
         </TabPane>
         {
-          user?.user?.role === 'Admin' || 'Volunteer' && (
+          user?.role === 'Admin' || 'Volunteer' && (
             <TabPane tab="Add Item" key="2">
               <Card>
                 <Form

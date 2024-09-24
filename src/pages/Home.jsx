@@ -13,7 +13,7 @@ import { Carousel } from 'antd';
 import { useGetCrisisQuery, useGetDonationandExpensesQuery, useGetDonationQuery, useGetVolunteerQuery } from '../redux/api/baseApi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+
 const data = [
   { name: 'Mon', donations: 4000, expenses: 2400 },
   { name: 'Tue', donations: 3000, expenses: 1398 },
@@ -28,8 +28,15 @@ const Home = () => {
   const { data: donationDatas, isLoading: donationDatasLoading } = useGetDonationQuery(undefined);
   const { data: getCrises, isLoading: getCrisesLoading } = useGetCrisisQuery(undefined);
   const { data: donationandExpensesDatas, isLoading: isLoadingDonationandExpenses } = useGetDonationandExpensesQuery(undefined);
-  const { data: getVolunteer, isLoading: getVolunteerLoading } = useGetVolunteerQuery(undefined);
-  if (donationDatasLoading || getCrisesLoading || getVolunteerLoading || isLoadingDonationandExpenses) return <Spin />;
+  const {data: getVolunteer, isLoading: getVolunteerLoading} = useGetVolunteerQuery(undefined);
+    if (donationDatasLoading || getCrisesLoading || getVolunteerLoading || isLoadingDonationandExpenses) {
+    return <Spin tip="Loading data, please wait..." />;
+  }
+
+  if (!donationDatas || !getCrises || !donationandExpensesDatas || !getVolunteer) {
+    return <div>Error loading data, please refresh or try again later.</div>;
+  }
+
   console.log(donationandExpensesDatas[0])
   return (
     <div className="flex flex-col">
@@ -62,8 +69,8 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="mt-20 mb-20 flex flex-col-reverse lg:flex-row ">
-          <div className='w-1/2'>
+        <div className="mt-20 mb-20 grid lg:grid-cols-2">
+          <div>
             <div className="stat">
               <div className="stat-figure text-secondary">
               </div>
@@ -73,36 +80,21 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className='lg:w-1/2'>
-            <Swiper
-              effect={'coverflow'}
-              grabCursor={true}
-              centeredSlides={true}
-              slidesPerView={'auto'}
-              coverflowEffect={{
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-              }}
-              pagination={true}
-              modules={[EffectCoverflow, Pagination]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <img src={d1} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={d2} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={d3} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={d4} />
-              </SwiperSlide>
-            </Swiper>
+          <div>
+            <Carousel autoplay>
+              <div>
+                <img src={d1} alt="" />
+              </div>
+              <div>
+                <img src={d2} alt="" />
+              </div>
+              <div>
+                <img src={d3} alt="" />
+              </div>
+              <div>
+                <img src={d4} alt="" />
+              </div>
+            </Carousel>
           </div>
         </div>
         <div>
@@ -121,7 +113,7 @@ const Home = () => {
             </ResponsiveContainer>
           </Card>
         </div>
-        <div className="mt-20 mb-20 lg:grid grid-cols-2">
+        <div className="mt-20 mb-20 grid grid-cols-2">
           <div className='mr-12'>
             <img src={VolunteerImage} className='rounded-xl' alt="" />
           </div>

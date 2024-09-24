@@ -12,7 +12,6 @@ const Volunteer = () => {
   const [loading, setLoading] = useState(true);
   const { data: getVolunteer, isLoading: volunteerLoading } = useGetVolunteerQuery(undefined);
   const [updateVolunteer, { isLoading: updateVolunteerLoading }] = useUpdateVolunteerMutation(undefined);
-  if (volunteerLoading || updateVolunteerLoading) return <Spin />;
   console.log('VOLUNTEER', getVolunteer);
   console.log('ROLE', user?.role);
   const columns = [

@@ -9,7 +9,6 @@ const Donation = () => {
   const { data: donationDatas, isLoading } = useGetDonationQuery(undefined);
   const { data: donationandExpensesDatas, isLoading: isLoadingDonationandExpenses } = useGetDonationandExpensesQuery(undefined);
   const [postDonation, { isLoading: isPosting }] = usePostDonationMutation(undefined);
-  if (isLoading || isPosting || isLoadingDonationandExpenses) return <Spin />;
   const onFinish = async (values) => {
     console.log(values);
     await postDonation(values);

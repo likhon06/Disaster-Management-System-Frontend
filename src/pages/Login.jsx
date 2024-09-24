@@ -19,6 +19,7 @@ const Login = () => {
     console.log('Received values of form: ', values);
     console.log(values);
     const res = await postLogin(values);
+    console.log(res);
     const real_data = await jwtDecode(res?.data?.token);
     toast.success(`${real_data.username} logged in successfully`);
     dispatch(setUser(real_data));
