@@ -11,12 +11,8 @@ const Donation = () => {
   const [postDonation, { isLoading: isPostingLoading }] = usePostDonationMutation(undefined);
   if(isLoading || isLoadingDonationandExpenses || isPostingLoading) return <Spin/>
   const onFinish = async (values) => {
-    console.log(values);
     await postDonation(values);
   };
-
-  console.log(donationandExpensesDatas)
-
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20 mb-20">

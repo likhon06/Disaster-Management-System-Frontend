@@ -30,7 +30,7 @@ const Inventory = () => {
   const [updateSingleInventory, { isLoading: updateSingleInventoryLoading }] = useUpdateSingleInventoryMutation();
 
   // Loader
-  if (postInventoryLoading || getInventoryLoading || deleteInventoryLoading || singleInventoryLoading
+ if (postInventoryLoading || getInventoryLoading || deleteInventoryLoading || singleInventoryLoading
     || updateSingleInventoryLoading || getDonationsListLoading) {
     return <Spin />;
   }
@@ -161,18 +161,21 @@ const Inventory = () => {
       // Optionally show a user-friendly message
     }
   };
+
   const handleDownload = () => {
     window.open('https://dmm-backend.vercel.app/api/csv-donation', '_blank');
   };
+
   const handleDownloadInvenotoryReport = () => {
     window.open('https://dmm-backend.vercel.app/api/csv-inventory', '_blank');
   }
+
   return (
     <div>
       <Tabs defaultActiveKey="1">
         <TabPane tab="Inventory List" key="1">
           {
-            user?.user?.role === 'Admin' && (
+            (user?.user?.role === 'Admin' || user?.user?.role === 'Volunteer') && (
               <>
                 <Button
                   style={{ backgroundColor: 'blue', color: '' }}
@@ -242,7 +245,7 @@ const Inventory = () => {
 
         </TabPane>
         {
-          (user?.user?.role === 'Admin' || user?.user?.role === 'Volunteer') && (
+          ['Admin', 'Volunteer'].includes(user?.user?.role) && (
             <TabPane tab="Add Item" key="2">
               <Card>
                 <Form
