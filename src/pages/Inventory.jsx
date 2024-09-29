@@ -18,19 +18,19 @@ const Inventory = () => {
   const [updatedPrice, setUpdatedPrice] = useState('');
   const [updatedName, setUpdatedName] = useState('');
   const [updatedQuantity, setUpdatedQuantity] = useState('');
-  
+
   // Querys
   const { data: getDonationsList, isLoading: getDonationsListLoading } = useGetDonationsListQuery(undefined);
   const { data: getSingleInventory, isLoading: singleInventoryLoading } = useGetSingleInventoryQuery(editId);
   const { data: getInventory, isLoading: getInventoryLoading } = useGetInventoryQuery();
-  
+
   // Mutations
   const [postInventory, { isLoading: postInventoryLoading }] = usePostInventoryMutation();
   const [deleteInventory, { isLoading: deleteInventoryLoading }] = useDeleteInventoryMutation();
   const [updateSingleInventory, { isLoading: updateSingleInventoryLoading }] = useUpdateSingleInventoryMutation();
- 
+
   // Loader
- if (postInventoryLoading || getInventoryLoading || deleteInventoryLoading || singleInventoryLoading
+  if (postInventoryLoading || getInventoryLoading || deleteInventoryLoading || singleInventoryLoading
     || updateSingleInventoryLoading || getDonationsListLoading) {
     return <Spin />;
   }
@@ -162,10 +162,10 @@ const Inventory = () => {
     }
   };
   const handleDownload = () => {
-    window.open('https://dmm-backend-lmtx.onrender.com/api/csv-donation', '_blank');
+    window.open('https://dmm-backend.vercel.app/api/csv-donation', '_blank');
   };
   const handleDownloadInvenotoryReport = () => {
-    window.open('https://dmm-backend-lmtx.onrender.com/api/csv-inventory', '_blank');
+    window.open('https://dmm-backend.vercel.app/api/csv-inventory', '_blank');
   }
   return (
     <div>
@@ -186,7 +186,7 @@ const Inventory = () => {
             )
           }
           <Card>
-            <Table  scroll={{ x: "max-content" }} columns={columns} dataSource={getInventory} />
+            <Table scroll={{ x: "max-content" }} columns={columns} dataSource={getInventory} />
           </Card>
           <div className='mt-12'></div>
           {
@@ -203,7 +203,7 @@ const Inventory = () => {
             </>)
           }
           <Card>
-            <Table  scroll={{ x: "max-content" }} columns={colums_donors} dataSource={getDonationsList} />
+            <Table scroll={{ x: "max-content" }} columns={colums_donors} dataSource={getDonationsList} />
           </Card>
           <Modal
             title={<p>Delete Inventory Item</p>}
@@ -242,7 +242,7 @@ const Inventory = () => {
 
         </TabPane>
         {
-          user?.role === 'Admin' || 'Volunteer' && (
+          (user?.user?.role === 'Admin' || user?.user?.role === 'Volunteer') && (
             <TabPane tab="Add Item" key="2">
               <Card>
                 <Form
