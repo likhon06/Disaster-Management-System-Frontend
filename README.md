@@ -4,6 +4,8 @@ This template provides a minimal setup to get React working in Vite with HMR (Ho
 
 ## Live Site: [DMM Frontend](https://dmm-frontend-cyan.vercel.app)
 
+## Backend: [DMM Backend GitHub Repo](https://github.com/YSISLM104926/dmm-backend)
+
 ---
 
 ## Tech Stack:
@@ -30,4 +32,3 @@ Currently, two official plugins are available:
 ---
 
 Feel free to contribute or suggest improvements!
-
