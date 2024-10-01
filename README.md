@@ -1,5 +1,6 @@
 # React + Vite
-# Live Site : dmm-frontend-cyan.vercel.app
+# React.js, Node.js, Express.js, PostgreSql, Ant-Design, Redux
+# Live Site : -dmm-frontend-cyan.vercel.app
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
