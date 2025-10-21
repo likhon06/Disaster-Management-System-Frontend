@@ -1,13 +1,13 @@
 import React from 'react';
-import { Form, Input, Button, Card, Spin } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { toast } from 'sonner';
+import { jwtDecode } from 'jwt-decode';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import registerImage from '../assets/images/auth.png'
-import { usePostLoginMutation } from '../redux/api/baseApi';
-import { jwtDecode } from 'jwt-decode';
-import { toast } from 'sonner';
-import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/features/userSlice';
+import { Form, Input, Button, Card, Spin } from 'antd';
+import { usePostLoginMutation } from '../redux/api/baseApi';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

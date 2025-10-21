@@ -26,15 +26,15 @@ import {
 const { TabPane } = Tabs;
 
 const Inventory = () => {
-  const user = useSelector((state) => state.user);
   // States
-  const [editId, setEditId] = useState(undefined);
-  const [deleteId, setDeleteId] = useState(null);
   const [open, setOpen] = useState(false);
-  const [openTwo, setOpenTwo] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [updatedPrice, setUpdatedPrice] = useState("");
+  const [openTwo, setOpenTwo] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
+  const user = useSelector((state) => state.user);
+  const [editId, setEditId] = useState(undefined);
   const [updatedName, setUpdatedName] = useState("");
+  const [updatedPrice, setUpdatedPrice] = useState("");
   const [updatedQuantity, setUpdatedQuantity] = useState("");
 
   // Querys
