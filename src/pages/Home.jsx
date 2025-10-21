@@ -86,7 +86,7 @@ const Home = () => {
             <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <Link
                 to="/donation"
-                className="btn-primary-modern inline-flex items-center group"
+                className="btn-primary-modern inline-flex items-center group w-full justify-center"
               >
                 Donate Now
                 <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">
@@ -95,7 +95,7 @@ const Home = () => {
               </Link>
               <Link
                 to="/volunteer"
-                className="btn-secondary-modern inline-flex items-center"
+                className="btn-secondary-modern inline-flex items-center w-full justify-center"
               >
                 Become Volunteer
               </Link>
@@ -107,7 +107,7 @@ const Home = () => {
               <div className="stat-title mb-4 mt-6 font-thin text-xl">
                 Total Funds
               </div>
-              <div className="stat-value text-secondary text-[120px] text-emerald-200 font-bold">
+              <div className="stat-value text-secondary text-8xl text-emerald-200 font-bold">
                 <sup className="font-medium">$</sup>
                 {donationDatas[0]?.sum}
               </div>
