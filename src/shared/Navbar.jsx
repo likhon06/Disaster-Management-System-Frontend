@@ -62,28 +62,27 @@ export default function Navbar() {
     );
 
     return (
-        <div className='w-full sticky top-0 z-50'>
-            {/* Desktop Header */}
-            <Header className="hidden lg:flex items-center justify-between bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-100 px-4 lg:px-8">
+        <div className='w-full sticky top-0 z-50 p-4'>
+            <Header className="hidden lg:flex items-center justify-between bg-white/90 backdrop-blur-md shadow-xl border border-gray-200/50 rounded-2xl px-6 lg:px-8 mx-auto max-w-7xl">
                 <div className="flex items-center gap-3">
                     <Link to="/" className="text-gray-800 text-xl font-bold hover:text-blue-600 transition-colors">
                         Disaster Management
                     </Link>
                 </div>
-                <Menu theme="light" mode="horizontal" className="flex-1 justify-end border-0">
-                    <Menu.Item key="/" icon={<HomeOutlined />} className="hover:bg-blue-50 rounded-lg mx-1">
+                <Menu theme="light" mode="horizontal" className="flex-1 justify-end border-0 bg-transparent">
+                    <Menu.Item key="/" icon={<HomeOutlined />} className="hover:bg-blue-50 rounded-xl mx-1 transition-all duration-200">
                         <Link to="/" className="font-medium">Home</Link>
                     </Menu.Item>
-                    <Menu.Item key="/donation" icon={<DollarOutlined />} className="hover:bg-blue-50 rounded-lg mx-1">
+                    <Menu.Item key="/donation" icon={<DollarOutlined />} className="hover:bg-blue-50 rounded-xl mx-1 transition-all duration-200">
                         <Link to="/donation" className="font-medium">Donation</Link>
                     </Menu.Item>
-                    <Menu.Item key="/crisis" icon={<AlertOutlined />} className="hover:bg-blue-50 rounded-lg mx-1">
+                    <Menu.Item key="/crisis" icon={<AlertOutlined />} className="hover:bg-blue-50 rounded-xl mx-1 transition-all duration-200">
                         <Link to="/crisis" className="font-medium">Crisis</Link>
                     </Menu.Item>
-                    <Menu.Item key="/volunteer" icon={<TeamOutlined />} className="hover:bg-blue-50 rounded-lg mx-1">
+                    <Menu.Item key="/volunteer" icon={<TeamOutlined />} className="hover:bg-blue-50 rounded-xl mx-1 transition-all duration-200">
                         <Link to="/volunteer" className="font-medium">Volunteers</Link>
                     </Menu.Item>
-                    <Menu.Item key="/inventory" icon={<InboxOutlined />} className="hover:bg-blue-50 rounded-lg mx-1">
+                    <Menu.Item key="/inventory" icon={<InboxOutlined />} className="hover:bg-blue-50 rounded-xl mx-1 transition-all duration-200">
                         <Link to="/inventory" className="font-medium">Inventory</Link>
                     </Menu.Item>
                 </Menu>
@@ -92,20 +91,20 @@ export default function Navbar() {
                         <>
                             <Button 
                                 icon={user?.user?.role === 'Admin' ? <GrUserAdmin className='text-red-500' size={20} /> : <UserOutlined />}
-                                className="flex items-center gap-2 font-medium"
+                                className="flex items-center gap-2 font-medium hover:bg-gray-50 rounded-xl transition-all duration-200"
                             >
                                 {user.user.username}
                             </Button>
                             <Button 
                                 type="primary" 
                                 onClick={handleLogout}
-                                className="btn-primary-modern"
+                                className="btn-primary-modern rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
                             >
                                 Logout
                             </Button>
                         </>
                     ) : (
-                        <Button type="primary" icon={<UserOutlined />} className="btn-primary-modern">
+                        <Button type="primary" icon={<UserOutlined />} className="btn-primary-modern rounded-xl shadow-lg hover:shadow-xl transition-all duration-200">
                             <Link to="/login">Login</Link>
                         </Button>
                     )}
@@ -113,7 +112,7 @@ export default function Navbar() {
             </Header>
 
             {/* Mobile Header */}
-            <Header className="lg:hidden bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-100 px-4 py-3">
+            <Header className="lg:hidden bg-white/90 backdrop-blur-md shadow-xl border border-gray-200/50 rounded-2xl px-4 py-3 mx-4">
                 <div className="flex justify-between items-center">
                     <div className="flex items-center gap-3">
                         <div className="text-gray-800 text-lg font-bold">Disaster Management</div>
@@ -124,7 +123,7 @@ export default function Navbar() {
                                 <Button 
                                     size="small"
                                     icon={user?.user?.role === 'Admin' ? <GrUserAdmin className='text-red-500' size={16} /> : <UserOutlined />}
-                                    className="text-xs"
+                                    className="text-xs hover:bg-gray-50 rounded-xl transition-all duration-200"
                                 >
                                     {user.user.username}
                                 </Button>
@@ -132,13 +131,13 @@ export default function Navbar() {
                                     size="small" 
                                     type="primary" 
                                     onClick={handleLogout}
-                                    className="btn-primary-modern text-xs px-3 py-1"
+                                    className="btn-primary-modern text-xs px-3 py-1 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
                                 >
                                     Logout
                                 </Button>
                             </>
                         ) : (
-                            <Button size="large" type="primary" icon={<UserOutlined />} className="btn-primary-modern text-xs">
+                            <Button size="large" type="primary" icon={<UserOutlined />} className="btn-primary-modern text-xs rounded-xl shadow-lg hover:shadow-xl transition-all duration-200">
                                 <Link to="/login">Login</Link>
                             </Button>
                         )}
@@ -146,7 +145,7 @@ export default function Navbar() {
                             type="text" 
                             icon={<MenuOutlined />} 
                             onClick={showDrawer}
-                            className="hover:bg-gray-100 rounded-lg"
+                            className="hover:bg-gray-100 rounded-xl transition-all duration-200"
                         />
                     </div>
                 </div>
