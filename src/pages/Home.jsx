@@ -173,9 +173,6 @@ const Home = () => {
           <Card className="w-full card-modern">
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-semibold text-gray-800">
-                  Daily Funds and Expenses
-                </h3>
                 <div className="flex gap-4">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
