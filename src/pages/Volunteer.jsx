@@ -99,15 +99,39 @@ const Volunteer = () => {
 
 
   return (
-    <div className='mt-20 mb-20'>
-      <Card title="Available Volunteers">
-        <Modal loading={loading} title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-          <h1>Assign Task</h1>
-          <Input onChange={(e) => setTask(e.target.value)} placeholder="Basic usage" />
-          <h1 className='mt-2'>Assign Location</h1>
-          <Input onChange={(e) => setTaskLocation(e.target.value)} placeholder="Basic usage" />
+    <div className='mt-8 mb-8 lg:mt-20 lg:mb-20 px-4'>
+      <Card title="Available Volunteers" className="w-full">
+        <Modal 
+          loading={loading} 
+          title="Assign Task" 
+          open={isModalOpen} 
+          onOk={handleOk} 
+          onCancel={handleCancel}
+          width="90vw"
+          maxWidth={500}
+        >
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Assign Task</h3>
+              <Input 
+                onChange={(e) => setTask(e.target.value)} 
+                placeholder="Enter task description" 
+                className="w-full"
+              />
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Assign Location</h3>
+              <Input 
+                onChange={(e) => setTaskLocation(e.target.value)} 
+                placeholder="Enter location" 
+                className="w-full"
+              />
+            </div>
+          </div>
         </Modal>
-        <Table  scroll={{ x: "max-content" }} columns={columns} dataSource={getVolunteer} />
+        <div className="overflow-x-auto">
+          <Table scroll={{ x: "max-content" }} columns={columns} dataSource={getVolunteer} />
+        </div>
       </Card>
     </div>
   );

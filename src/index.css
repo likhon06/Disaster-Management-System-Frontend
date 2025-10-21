@@ -1,3 +1,224 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Modern Design System */
+:root {
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-500: #3b82f6;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --primary-900: #1e3a8a;
+  
+  --success-50: #f0fdf4;
+  --success-500: #22c55e;
+  --success-600: #16a34a;
+  
+  --warning-50: #fffbeb;
+  --warning-500: #f59e0b;
+  --warning-600: #d97706;
+  
+  --danger-50: #fef2f2;
+  --danger-500: #ef4444;
+  --danger-600: #dc2626;
+  
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+/* Custom responsive utilities */
+@layer utilities {
+  .text-responsive {
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+  
+  .heading-responsive {
+    @apply text-2xl sm:text-3xl lg:text-4xl xl:text-5xl;
+  }
+  
+  .container-responsive {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .grid-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8;
+  }
+  
+  /* Modern UI Components */
+  .card-modern {
+    @apply bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300;
+  }
+  
+  .btn-primary-modern {
+    @apply bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200;
+  }
+  
+  .btn-secondary-modern {
+    @apply bg-white border-2 border-gray-200 hover:border-blue-500 text-gray-700 hover:text-blue-600 font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200;
+  }
+  
+  .input-modern {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200;
+  }
+  
+  .stat-card {
+    @apply bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-6 shadow-lg border border-blue-100;
+  }
+  
+  .crisis-card {
+    @apply bg-gradient-to-br from-red-50 to-orange-100 rounded-2xl p-6 shadow-lg border border-red-100;
+  }
+  
+  .volunteer-card {
+    @apply bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-6 shadow-lg border border-green-100;
+  }
+  
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Enhanced Ant Design Components */
+.ant-card {
+  @apply rounded-xl shadow-lg border-0;
+}
+
+.ant-card-head {
+  @apply border-b border-gray-100;
+}
+
+.ant-card-head-title {
+  @apply text-lg font-semibold text-gray-800;
+}
+
+.ant-btn-primary {
+  @apply bg-gradient-to-r from-blue-600 to-blue-700 border-0 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200;
+}
+
+.ant-btn {
+  @apply font-semibold rounded-lg transition-all duration-200;
+}
+
+.ant-input {
+  @apply rounded-lg border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200;
+}
+
+.ant-form-item-label > label {
+  @apply font-semibold text-gray-700;
+}
+
+.ant-statistic-title {
+  @apply text-gray-600 font-medium;
+}
+
+.ant-statistic-content {
+  @apply text-gray-900;
+}
+
+.ant-table-thead > tr > th {
+  @apply bg-gray-50 font-semibold text-gray-700 border-b-2 border-gray-200;
+}
+
+.ant-table-tbody > tr:hover > td {
+  @apply bg-blue-50;
+}
+
+.ant-menu-horizontal {
+  @apply border-b-0;
+}
+
+.ant-menu-item {
+  @apply font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200;
+}
+
+.ant-menu-item-selected {
+  @apply text-blue-600 bg-blue-50;
+}
+
+/* Mobile-first responsive design improvements */
+@media (max-width: 640px) {
+  .ant-card {
+    @apply mx-2;
+  }
+  
+  .ant-table {
+    @apply text-xs;
+  }
+  
+  .ant-btn {
+    @apply text-sm px-3 py-1;
+  }
+  
+  .ant-form-item-label {
+    @apply text-sm;
+  }
+}
+
+/* Tablet responsive improvements */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .ant-card {
+    @apply mx-4;
+  }
+  
+  .ant-table {
+    @apply text-sm;
+  }
+}
+
+/* Ensure proper spacing on mobile */
+@media (max-width: 768px) {
+  .ant-layout-header {
+    @apply px-2 py-2;
+  }
+  
+  .ant-drawer-body {
+    @apply p-4;
+  }
+  
+  .ant-modal {
+    @apply mx-4;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}

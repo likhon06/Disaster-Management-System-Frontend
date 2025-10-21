@@ -115,27 +115,32 @@ const Admin = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-6">Admin Management</h1>
-      <Tabs defaultActiveKey="1">
+    <div className="mt-8 mb-8 lg:mt-20 lg:mb-20 px-4">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Admin Management</h1>
+      <Tabs defaultActiveKey="1" className="w-full">
         <TabPane tab="Volunteer Management" key="1">
-          <Card>
-            <Table columns={volunteerColumns} dataSource={volunteerData} />
+          <Card className="w-full">
+            <div className="overflow-x-auto">
+              <Table columns={volunteerColumns} dataSource={volunteerData} scroll={{ x: "max-content" }} />
+            </div>
           </Card>
         </TabPane>
         <TabPane tab="Crisis Management" key="2">
-          <Card>
-            <Table columns={crisisColumns} dataSource={crisisData} />
+          <Card className="w-full">
+            <div className="overflow-x-auto">
+              <Table columns={crisisColumns} dataSource={crisisData} scroll={{ x: "max-content" }} />
+            </div>
           </Card>
         </TabPane>
         <TabPane tab="Reports" key="3">
-          <Card>
-            <Space direction="vertical" style={{ width: '100%' }}>
+          <Card className="w-full max-w-2xl mx-auto">
+            <Space direction="vertical" style={{ width: '100%' }} className="w-full">
               <Button 
                 type="primary" 
                 icon={<DownloadOutlined />} 
                 onClick={() => generateReport('donation')}
-                block
+                className="w-full"
+                size="large"
               >
                 Generate Daily Donation Report
               </Button>
@@ -143,7 +148,8 @@ const Admin = () => {
                 type="primary" 
                 icon={<DownloadOutlined />} 
                 onClick={() => generateReport('expense')}
-                block
+                className="w-full"
+                size="large"
               >
                 Generate Daily Expense Report
               </Button>
@@ -151,7 +157,8 @@ const Admin = () => {
                 type="primary" 
                 icon={<DownloadOutlined />} 
                 onClick={() => generateReport('inventory')}
-                block
+                className="w-full"
+                size="large"
               >
                 Generate Inventory Report
               </Button>

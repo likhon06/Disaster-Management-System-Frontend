@@ -27,35 +27,86 @@ const Login = () => {
   };
 
   return (
-    <div className='flex justify-center items-center mt-20 mb-20 flex-col-reverse lg:flex-row'>
-      <Card title="Login" className="w-96">
-      <p>Admin_ username: <span className='text-red-400 font-bold'>Raiden</span>, password: <span className='text-red-400 font-bold'>admin123</span> </p>
-        <Form
-          name="login"
-          onFinish={onFinish}
-        >
-          <Form.Item
-            name="username"
-            rules={[{ required: true, message: 'Please input your Username!' }]}
-          >
-            <Input prefix={<UserOutlined />} placeholder="Username" />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            rules={[{ required: true, message: 'Please input your Password!' }]}
-          >
-            <Input.Password prefix={<LockOutlined />} placeholder="Password" />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit" className="w-full">
-              Log in
-            </Button>
-          </Form.Item>
-          <p>dont have an account? <Link to="/register" className='text-blue-500'>Register</Link></p>
-        </Form>
-      </Card>
-      <div>
-        <img className='' src={registerImage} alt="" />
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        {/* Login Form */}
+        <div className="flex items-center justify-center">
+          <div className="w-full max-w-md">
+            <div className="p-8">
+              <div className="text-center mb-8">
+                <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
+                <p className="text-gray-600">Sign in to your account to continue</p>
+              </div>
+
+              <Form
+                name="login"
+                onFinish={onFinish}
+                layout="vertical"
+                className="space-y-4"
+              >
+                <Form.Item
+                  name="username"
+                  label={<span className="font-semibold text-gray-700">Username</span>}
+                  rules={[{ required: true, message: 'Please input your Username!' }]}
+                >
+                  <Input 
+                    prefix={<UserOutlined className="text-gray-400" />} 
+                    placeholder="Raiden"
+                    className="input-modern"
+                    size="large"
+                  />
+                </Form.Item>
+                
+                <Form.Item
+                  name="password"
+                  label={<span className="font-semibold text-gray-700">Password</span>}
+                  rules={[{ required: true, message: 'Please input your Password!' }]}
+                >
+                  <Input.Password 
+                    prefix={<LockOutlined className="text-gray-400" />} 
+                    placeholder="admin123"
+                    className="input-modern"
+                    size="large"
+                  />
+                </Form.Item>
+                
+                <Form.Item className="mt-8">
+                  <Button 
+                    type="primary" 
+                    htmlType="submit" 
+                    className="w-full btn-primary-modern text-lg py-4"
+                    size="large"
+                  >
+                    <UserOutlined className="mr-2" />
+                    Sign In
+                  </Button>
+                </Form.Item>
+              </Form>
+
+              <div className="text-center mt-6">
+                <p className="text-gray-600">
+                  Don't have an account? 
+                  <Link to="/register" className='text-blue-600 hover:text-blue-700 font-semibold ml-1 transition-colors duration-200'>
+                    Create Account
+                  </Link>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Image Section */}
+        <div className="flex items-center justify-center">
+          <div className="relative">
+            <div className="absolute inset-0 rounded-3xl blur-3xl"></div>
+            <img 
+              className='w-full h-auto rounded-2xl relative z-10' 
+              src={registerImage} 
+              alt="Disaster Management Login" 
+            />
+            <div className="absolute inset-0 rounded-2xl z-20"></div>
+          </div>
+        </div>
       </div>
     </div>
   );

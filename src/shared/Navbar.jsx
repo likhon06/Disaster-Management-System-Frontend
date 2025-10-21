@@ -62,81 +62,110 @@ export default function Navbar() {
     );
 
     return (
-        <div className=''>
-            <Header className="hidden lg:flex items-center justify-between rounded-2xl bg-white">
-                <div className="text-black text-xl font-bold">Disaster Management</div>
-                <Menu theme="light" mode="horizontal" className="flex-1 justify-end">
-                    <Menu.Item key="/" icon={<HomeOutlined />}>
-                        <Link to="/">Home</Link>
+        <div className='w-full sticky top-0 z-50'>
+            {/* Desktop Header */}
+            <Header className="hidden lg:flex items-center justify-between bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-100 px-4 lg:px-8">
+                <div className="flex items-center gap-3">
+                    <Link to="/" className="text-gray-800 text-xl font-bold hover:text-blue-600 transition-colors">
+                        Disaster Management
+                    </Link>
+                </div>
+                <Menu theme="light" mode="horizontal" className="flex-1 justify-end border-0">
+                    <Menu.Item key="/" icon={<HomeOutlined />} className="hover:bg-blue-50 rounded-lg mx-1">
+                        <Link to="/" className="font-medium">Home</Link>
                     </Menu.Item>
-                    <Menu.Item key="/donation" icon={<DollarOutlined />}>
-                        <Link to="/donation">Donation</Link>
+                    <Menu.Item key="/donation" icon={<DollarOutlined />} className="hover:bg-blue-50 rounded-lg mx-1">
+                        <Link to="/donation" className="font-medium">Donation</Link>
                     </Menu.Item>
-                    <Menu.Item key="/crisis" icon={<AlertOutlined />}>
-                        <Link to="/crisis">Crisis</Link>
+                    <Menu.Item key="/crisis" icon={<AlertOutlined />} className="hover:bg-blue-50 rounded-lg mx-1">
+                        <Link to="/crisis" className="font-medium">Crisis</Link>
                     </Menu.Item>
-                    <Menu.Item key="/volunteer" icon={<TeamOutlined />}>
-                        <Link to="/volunteer">Volunteers</Link>
+                    <Menu.Item key="/volunteer" icon={<TeamOutlined />} className="hover:bg-blue-50 rounded-lg mx-1">
+                        <Link to="/volunteer" className="font-medium">Volunteers</Link>
                     </Menu.Item>
-                    <Menu.Item key="/inventory" icon={<InboxOutlined />}>
-                        <Link to="/inventory">Inventory</Link>
+                    <Menu.Item key="/inventory" icon={<InboxOutlined />} className="hover:bg-blue-50 rounded-lg mx-1">
+                        <Link to="/inventory" className="font-medium">Inventory</Link>
                     </Menu.Item>
                 </Menu>
-                {
-                    user?.user ? <>
-                        <Button icon={user?.user?.role === 'Admin' ? <GrUserAdmin className='text-red-500' size={20} /> : <UserOutlined />}>
-                            {user.user.username}</Button>
-                        <Button type="primary" onClick={handleLogout} className='ms-4'>Logout</Button>
-                    </>
-                        :
-                        <Button type="primary" icon={<UserOutlined />}>
+                <div className="flex items-center gap-3">
+                    {user?.user ? (
+                        <>
+                            <Button 
+                                icon={user?.user?.role === 'Admin' ? <GrUserAdmin className='text-red-500' size={20} /> : <UserOutlined />}
+                                className="flex items-center gap-2 font-medium"
+                            >
+                                {user.user.username}
+                            </Button>
+                            <Button 
+                                type="primary" 
+                                onClick={handleLogout}
+                                className="btn-primary-modern"
+                            >
+                                Logout
+                            </Button>
+                        </>
+                    ) : (
+                        <Button type="primary" icon={<UserOutlined />} className="btn-primary-modern">
                             <Link to="/login">Login</Link>
                         </Button>
-                }
+                    )}
+                </div>
             </Header>
-            <div className='md:hidden lg:hidden'>
-                <Header style={{ background: '#fff', padding: 0 }}>
-                    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 15px' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <h1 style={{ margin: 0, marginRight: '20px' }}>Disaster Management</h1>
-                                <div className="desktop-menu" style={{ display: 'none', '@media (min-width: 768px)': { display: 'block' } }}>
-                                    <MenuComponent />
-                                </div>
-                            </div>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <div className="mobile-menu" style={{ display: 'block', '@media (min-width: 768px)': { display: 'none' } }}>
-                                    <Button type="text" icon={<MenuOutlined />} onClick={showDrawer} />
-                                </div>
-                                {user ? (
-                                    <>
-                                        <Button icon={user.role === 'Admin' ? <GrUserAdmin style={{ color: 'red' }} /> : <UserOutlined />} style={{ marginRight: '10px' }}>
-                                            {user.username}
-                                        </Button>
-                                        <Button type="primary" onClick={handleLogout}>
-                                            Logout
-                                        </Button>
-                                    </>
-                                ) : (
-                                    <Button type="primary" icon={<UserOutlined />}>
-                                        <Link to="/login">Login</Link>
-                                    </Button>
-                                )}
-                            </div>
-                        </div>
-                    </div>
-                    <Drawer
-                        title="Menu"
-                        placement="left"
-                        onClose={onClose}
-                        visible={visible}
-                        bodyStyle={{ padding: 0 }}
-                    >
-                        <MenuComponent mode="vertical" onClose={onClose} />
-                    </Drawer>
-                </Header>
-            </div>
 
+            {/* Mobile Header */}
+            <Header className="lg:hidden bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-100 px-4 py-3">
+                <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-3">
+                        <div className="text-gray-800 text-lg font-bold">Disaster Management</div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        {user?.user ? (
+                            <>
+                                <Button 
+                                    size="small"
+                                    icon={user?.user?.role === 'Admin' ? <GrUserAdmin className='text-red-500' size={16} /> : <UserOutlined />}
+                                    className="text-xs"
+                                >
+                                    {user.user.username}
+                                </Button>
+                                <Button 
+                                    size="small" 
+                                    type="primary" 
+                                    onClick={handleLogout}
+                                    className="btn-primary-modern text-xs px-3 py-1"
+                                >
+                                    Logout
+                                </Button>
+                            </>
+                        ) : (
+                            <Button size="large" type="primary" icon={<UserOutlined />} className="btn-primary-modern text-xs">
+                                <Link to="/login">Login</Link>
+                            </Button>
+                        )}
+                        <Button 
+                            type="text" 
+                            icon={<MenuOutlined />} 
+                            onClick={showDrawer}
+                            className="hover:bg-gray-100 rounded-lg"
+                        />
+                    </div>
+                </div>
+                <Drawer
+                    title={
+                        <div className="flex items-center gap-3">
+                            <span className="font-semibold">Menu</span>
+                        </div>
+                    }
+                    placement="right"
+                    onClose={onClose}
+                    open={visible}
+                    bodyStyle={{ padding: 0 }}
+                    width={300}
+                    className="modern-drawer"
+                >
+                    <MenuComponent mode="vertical" onClose={onClose} />
+                </Drawer>
+            </Header>
         </div>
     );
 }
